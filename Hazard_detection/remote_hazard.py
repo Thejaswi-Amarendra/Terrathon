@@ -3,6 +3,13 @@ import cv2
 import numpy as np
 import time
 import imutils
+import pyttsx3
+
+
+
+
+
+
 
 def Distance_finder(Focal_Length, real_face_width, face_width_in_frame):
  
@@ -25,6 +32,7 @@ with open('coco.names', 'r') as f:
 
 url = "http://192.168.255.219:8080/shot.jpg"
 
+pyobj = pyttsx3.init()
 
 while True:
     danger = False
@@ -97,7 +105,11 @@ while True:
             #     print("Waits for 3 seconds")
             #     time.sleep(3)
         if danger==True:
-            print(objects)
+            print(" ".join(objects))
+            
+            pyobj.say(" ".join(objects))
+
+            time.sleep(3)
 
 
 
