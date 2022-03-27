@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<script>
+  function modifyState(x)
+  {
+    var y = window.location.href
+    y=y+x
+    window.location.replace(x)
+  }
+</script>
+<h1 align="center">Live streaming</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<!-- <form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+<form> -->
+<div align ="center">
+  <button type="button" class="btn btn-primary" onClick="modifyState('video')">stream</button>
+</div>
+  <!-- <button type="button" class="btn btn-primary" onClick="modifyState('video')">stream</button> -->
+</form>
+{% endblock %}
